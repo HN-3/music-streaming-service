@@ -9,6 +9,15 @@
 * [참고 사이트](https://stricky.tistory.com/342) 링크
 * 설치에 오랜 시간이 걸리니 먼저 하는 것을 추천합니다.
 
+* Mac 기준(터미널을 이용한 설치-mysql workbench version: 8.0.22)
+$ brew install mysql@(설치할 버전) // 설치할 버전을 명시하지 않으면 최신 버전으로 설치
+* mysql 실행(background 실행)
+$ brew services start mysql
+\# background 실행이 필요없는 경우
+$ mysql.server start
+* mysql 기본 환경 설정(root 사용자 비밀번호 변경, 비밀번호 복잡도 검사 과정,  익명 사용자 삭제, 원격 접속 허용, 테스트DB 삭제, 수정여부 설정)
+$ mysql_secure_installation
+
 ## DB 구축
 * `MySQL Workbench`를 사용합니다. 로컬에 없다면 설치해주세요.
 * [참고 사이트](https://withcoding.com/36)와 동일한 과정으로 진행합니다.
