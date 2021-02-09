@@ -56,10 +56,11 @@ dependencies {
 }
 ```
 ### 2. `application.properties` 추가
+* path : src/main/resources/application.properties
 * 제가 진행하여 깃에 추가했으므로 풀을 받아서 사용하시면 됩니다.
 #### (1) 사용한 코드
 ```
-spring.datasource.url=jdbc:mysql://localhost:3306/baechoo?autoReconnect=true&useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+spring.datasource.url=jdbc:mysql://localhost:3306/hestagram?autoReconnect=true&useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
 spring.datasource.dbcp.test-on-borrow=true
 spring.datasource.dbcp.validation-query=select 1
 spring.datasource.username=admin
@@ -71,7 +72,7 @@ spring.jpa.show-sql=true
   ```
   com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
   ```
-  * 기본적으로 8시간 안에 request가 오지 않으면 강제적으로 Connection을 닫아버리기 때문에 발생하  에러
+  * 기본적으로 8시간 안에 request가 오지 않으면 강제적으로 Connection을 닫아버리기 때문에 발생하는 에러
 #### (2) 코드의 의미
 ```
 spring.datasource.url=jdbc:mysql://localhost:3306/schema_name?조건들
