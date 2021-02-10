@@ -1,7 +1,7 @@
 -- -----------------------------------------------------
 -- Schema hestagram
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `hestagram` DEFAULT CHARACTER SET utf8 ;
+CREATE SCHEMA IF NOT EXISTS `hestagram` DEFAULT CHARACTER SET utf8mb4 ;
 USE `hestagram` ;
 
 -- -----------------------------------------------------
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `hestagram`.`User` (
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE)
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `hestagram`.`Content` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
@@ -72,13 +72,13 @@ CREATE TABLE IF NOT EXISTS `hestagram`.`Comment` (
     REFERENCES `hestagram`.`Content` (`content_index`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `user_index`
+  CONSTRAINT `user_index2`
     FOREIGN KEY (`user_index`)
     REFERENCES `hestagram`.`User` (`user_index`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
@@ -90,13 +90,13 @@ CREATE TABLE IF NOT EXISTS `hestagram`.`Follow` (
   `following_index` INT NOT NULL,
   `user_index` INT NOT NULL,
   PRIMARY KEY (`following_index`, `user_index`),
-  CONSTRAINT `user_index`
-    FOREIGN KEY ()
-    REFERENCES `hestagram`.`User` ()
+  CONSTRAINT `user_index3`
+    FOREIGN KEY (`user_index`)
+    REFERENCES `hestagram`.`User` (`user_index`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
@@ -108,13 +108,13 @@ CREATE TABLE IF NOT EXISTS `hestagram`.`Hashtag` (
   `tag_text` VARCHAR(255) NOT NULL,
   `content_index` INT NOT NULL,
   PRIMARY KEY (`content_index`, `tag_text`),
-  CONSTRAINT `content_index`
+  CONSTRAINT `content_index2`
     FOREIGN KEY (`content_index`)
     REFERENCES `hestagram`.`Content` (`content_index`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
@@ -128,15 +128,15 @@ CREATE TABLE IF NOT EXISTS `hestagram`.`Like` (
   `commit_time` TIMESTAMP NULL DEFAULT NULL,
   PRIMARY KEY (`content_index`, `user_index`),
   INDEX `user_index_idx` (`user_index` ASC) VISIBLE,
-  CONSTRAINT `user_index`
+  CONSTRAINT `user_index4`
     FOREIGN KEY (`user_index`)
     REFERENCES `hestagram`.`User` (`user_index`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `content_index`
+  CONSTRAINT `content_index3`
     FOREIGN KEY (`content_index`)
     REFERENCES `hestagram`.`Content` (`content_index`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+DEFAULT CHARACTER SET = utf8mb4;
