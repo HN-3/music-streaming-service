@@ -19,7 +19,6 @@ CREATE TABLE IF NOT EXISTS `hestagram`.`User` (
   `id` VARCHAR(255) NOT NULL,
   `profile_picture` VARCHAR(255) NULL DEFAULT NULL,
   `description` VARCHAR(255) NULL DEFAULT NULL,
-  `like_count` INT NULL,
   PRIMARY KEY (`user_index`),
   UNIQUE INDEX `user_index_UNIQUE` (`user_index` ASC) VISIBLE,
   UNIQUE INDEX `nickname_UNIQUE` (`nickname` ASC) VISIBLE,
