@@ -1,67 +1,39 @@
 package hhh.hestagram.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import java.util.Date;
+
+@Entity
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(schema="hestagram", name="Content")
 public class Content {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "content_index", nullable = false)
     private Long contentIndex;
+
+    @Column(name = "user_index", nullable = false)
     private Long userIndex;
+
+    @Column(name = "user_content_index", nullable = false)
     private Long userContentIndex;
+
+    @Column(name = "photo")
     private String photo;
-    private String updateTime;
+
+    @Column(name = "update_time")
+    private Date updateTime;
+
+    @Column(name = "content_text")
     private String contentText;
+
+    @Column(name = "like_count")
     private Long likeCount;
-
-    public Long getContentIndex() {
-        return contentIndex;
-    }
-
-    public void setContentIndex(Long contentIndex) {
-        this.contentIndex = contentIndex;
-    }
-
-    public Long getUserIndex() {
-        return userIndex;
-    }
-
-    public void setUserIndex(Long userIndex) {
-        this.userIndex = userIndex;
-    }
-
-    public Long getUserContentIndex() {
-        return userContentIndex;
-    }
-
-    public void setUserContentIndex(Long userContentIndex) {
-        this.userContentIndex = userContentIndex;
-    }
-
-    public String getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
-    }
-
-    public String getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(String updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public String getContentText() {
-        return contentText;
-    }
-
-    public void setContentText(String contentText) {
-        this.contentText = contentText;
-    }
-
-    public Long getLikeCount() {
-        return likeCount;
-    }
-
-    public void setLikeCount(Long likeCount) {
-        this.likeCount = likeCount;
-    }
 }
