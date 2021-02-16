@@ -1,2 +1,14 @@
-package hhh.hestagram.controller.dto;public class HashtagDto {
+package hhh.hestagram.controller.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class HashtagDto {
+    private Long contentIndex;
 }
