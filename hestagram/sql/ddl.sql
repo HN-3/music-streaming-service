@@ -33,7 +33,6 @@ CREATE TABLE IF NOT EXISTS `hestagram`.`User` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
-
 -- -----------------------------------------------------
 -- Table `hestagram`.`Content`
 -- -----------------------------------------------------
@@ -56,7 +55,6 @@ CREATE TABLE IF NOT EXISTS `hestagram`.`Content` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
-
 
 -- -----------------------------------------------------
 -- Table `hestagram`.`Comment`
@@ -84,7 +82,6 @@ CREATE TABLE IF NOT EXISTS `hestagram`.`Comment` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
-
 -- -----------------------------------------------------
 -- Table `hestagram`.`Follow`
 -- -----------------------------------------------------
@@ -102,7 +99,6 @@ CREATE TABLE IF NOT EXISTS `hestagram`.`Follow` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
-
 -- -----------------------------------------------------
 -- Table `hestagram`.`Hashtag`
 -- -----------------------------------------------------
@@ -119,7 +115,6 @@ CREATE TABLE IF NOT EXISTS `hestagram`.`Hashtag` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
-
 
 -- -----------------------------------------------------
 -- Table `hestagram`.`Like`
