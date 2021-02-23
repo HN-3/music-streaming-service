@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `hestagram`.`Content` (
   `like_count` INT NULL DEFAULT 0,
   INDEX `user_index_idx` (`user_index` ASC) VISIBLE,
   PRIMARY KEY (`content_index`),
-  CONSTRAINT `user_index`
+  CONSTRAINT `user_index1`
     FOREIGN KEY (`user_index`)
     REFERENCES `hestagram`.`User` (`user_index`)
     ON DELETE NO ACTION
@@ -62,8 +62,8 @@ CREATE TABLE IF NOT EXISTS `hestagram`.`Comment` (
   `content_index` INT NOT NULL,
   `comment_index` INT NOT NULL,
   `user_index` INT NOT NULL,
-  `comment_text` VARCHAR(255) NOT NULL DEFAULT NULL,
-  `update_time` TIMESTAMP NOT NULL DEFAULT NULL,
+  `comment_text` VARCHAR(255) NOT NULL DEFAULT "", -- default null
+  `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`content_index`, `comment_index`, `user_index`),
   INDEX `user_index_idx` (`user_index` ASC) VISIBLE,
   CONSTRAINT `content_index`
@@ -124,7 +124,7 @@ DROP TABLE IF EXISTS `hestagram`.`Like` ;
 CREATE TABLE IF NOT EXISTS `hestagram`.`Like` (
   `content_index` INT NOT NULL,
   `user_index` INT NOT NULL,
-  `commit_time` TIMESTAMP NOT NULL DEFAULT NULL,
+  `commit_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`content_index`, `user_index`),
   INDEX `user_index_idx` (`user_index` ASC) VISIBLE,
   CONSTRAINT `user_index4`
