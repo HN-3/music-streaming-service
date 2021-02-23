@@ -1,6 +1,11 @@
 -- -----------------------------------------------------
 -- Schema hestagram
 -- -----------------------------------------------------
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+
 CREATE SCHEMA IF NOT EXISTS `hestagram` DEFAULT CHARACTER SET utf8mb4 ;
 USE `hestagram` ;
 
@@ -28,7 +33,6 @@ CREATE TABLE IF NOT EXISTS `hestagram`.`User` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
-
 -- -----------------------------------------------------
 -- Table `hestagram`.`Content`
 -- -----------------------------------------------------
@@ -52,7 +56,6 @@ CREATE TABLE IF NOT EXISTS `hestagram`.`Content` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
-
 -- -----------------------------------------------------
 -- Table `hestagram`.`Comment`
 -- -----------------------------------------------------
@@ -62,8 +65,8 @@ CREATE TABLE IF NOT EXISTS `hestagram`.`Comment` (
   `content_index` INT NOT NULL,
   `comment_index` INT NOT NULL,
   `user_index` INT NOT NULL,
-  `comment_text` VARCHAR(255) NOT NULL DEFAULT NULL,
-  `update_time` TIMESTAMP NOT NULL DEFAULT NULL,
+  `comment_text` VARCHAR(255) NULL DEFAULT NULL,
+  `update_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`content_index`, `comment_index`, `user_index`),
   INDEX `user_index_idx` (`user_index` ASC) VISIBLE,
   CONSTRAINT `content_index`
@@ -78,7 +81,6 @@ CREATE TABLE IF NOT EXISTS `hestagram`.`Comment` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
-
 
 -- -----------------------------------------------------
 -- Table `hestagram`.`Follow`
@@ -97,7 +99,6 @@ CREATE TABLE IF NOT EXISTS `hestagram`.`Follow` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
-
 -- -----------------------------------------------------
 -- Table `hestagram`.`Hashtag`
 -- -----------------------------------------------------
@@ -115,7 +116,6 @@ CREATE TABLE IF NOT EXISTS `hestagram`.`Hashtag` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
-
 -- -----------------------------------------------------
 -- Table `hestagram`.`Like`
 -- -----------------------------------------------------
@@ -124,7 +124,7 @@ DROP TABLE IF EXISTS `hestagram`.`Like` ;
 CREATE TABLE IF NOT EXISTS `hestagram`.`Like` (
   `content_index` INT NOT NULL,
   `user_index` INT NOT NULL,
-  `commit_time` TIMESTAMP NOT NULL DEFAULT NULL,
+  `commit_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`content_index`, `user_index`),
   INDEX `user_index_idx` (`user_index` ASC) VISIBLE,
   CONSTRAINT `user_index4`
