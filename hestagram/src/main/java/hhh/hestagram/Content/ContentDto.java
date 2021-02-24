@@ -1,4 +1,4 @@
-package hhh.hestagram.controller.dto;
+package hhh.hestagram.Content;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,7 +13,6 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ContentDto {
-    private Long userIndex;
     private Long userContentIndex;
     private String photo;
     private Date updateTime;

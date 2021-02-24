@@ -1,4 +1,4 @@
-package hhh.hestagram.controller.dto;
+package hhh.hestagram.hashtag;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

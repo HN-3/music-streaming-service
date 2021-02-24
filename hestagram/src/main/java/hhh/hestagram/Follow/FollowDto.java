@@ -1,4 +1,4 @@
-package hhh.hestagram.controller.dto;
+package hhh.hestagram.Follow;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

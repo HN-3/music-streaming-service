@@ -1,4 +1,4 @@
-package hhh.hestagram.domain;
+package hhh.hestagram.Follow;
 
 import lombok.NoArgsConstructor;
 
