@@ -1,4 +1,4 @@
-package hhh.hestagram.controller.dto;
+package hhh.hestagram.Likes;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,11 +12,7 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ContentDto {
+public class LikesDto {
     private Long userIndex;
-    private Long userContentIndex;
-    private String photo;
-    private Date updateTime;
-    private String contentText;
-    private Long likeCount;
+    private Date commitTime;
 }

@@ -1,4 +1,4 @@
-package hhh.hestagram.domain;
+package hhh.hestagram.hashtag;
 
 
 import lombok.AllArgsConstructor;

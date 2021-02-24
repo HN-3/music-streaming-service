@@ -1,4 +1,4 @@
-package hhh.hestagram.service;
+package hhh.hestagram.Comment;
 
 public class CommentService {
 }
