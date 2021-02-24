@@ -21,8 +21,7 @@ public class Content extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "content_index", nullable = false)
     private Long contentIndex;
-
-
+    
     @Column(name = "user_content_index", nullable = false)
     private Long userContentIndex;
 
