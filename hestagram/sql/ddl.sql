@@ -22,6 +22,8 @@ CREATE TABLE IF NOT EXISTS `hestagram`.`User` (
   `email` VARCHAR(255) NOT NULL,
   `name` VARCHAR(255) NOT NULL,
   `id` VARCHAR(255) NOT NULL,
+  `following_count` INT NOT NULL,
+  `follower_count` INT NOT NULL,
   `profile_picture` VARCHAR(255) NULL DEFAULT NULL,
   `description` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`user_index`),
@@ -66,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `hestagram`.`Comment` (
   `comment_index` INT NOT NULL,
   `user_index` INT NOT NULL,
   `comment_text` VARCHAR(255) NULL DEFAULT NULL,
-  `update_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `upload_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`content_index`, `comment_index`, `user_index`),
   INDEX `user_index_idx` (`user_index` ASC) VISIBLE,
   CONSTRAINT `content_index`
