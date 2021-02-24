@@ -13,7 +13,6 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ContentDto {
-    //private Long userIndex;
     private Long userContentIndex;
     private String photo;
     private Date updateTime;
