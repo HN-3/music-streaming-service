@@ -43,7 +43,6 @@ DROP TABLE IF EXISTS `hestagram`.`Content` ;
 CREATE TABLE IF NOT EXISTS `hestagram`.`Content` (
   `content_index` INT NOT NULL AUTO_INCREMENT,
   `user_index` INT NOT NULL,
-  `user_content_index` INT NOT NULL,
   `photo` VARCHAR(255) NULL DEFAULT NULL,
   `update_time` TIMESTAMP NULL DEFAULT NULL,
   `content_text` VARCHAR(255) NULL DEFAULT NULL,
