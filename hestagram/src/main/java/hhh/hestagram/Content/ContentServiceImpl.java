@@ -17,6 +17,7 @@ public class ContentServiceImpl implements ContentService {
         this.contentRepository = contentRepository;
     }
 
+    
     @Override
     public Long saveContent(ContentSaveRequestDto requestDto) {
         return contentRepository.save(requestDto.toEntity()).getContentIndex();
