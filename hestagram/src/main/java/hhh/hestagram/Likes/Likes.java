@@ -12,8 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(schema="hestagram", name="Likes")
-public class Like {
-
+public class Likes {
     @Id
     @Column(name = "content_index", nullable = false)
     private Long contentIndex;
