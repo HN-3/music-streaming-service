@@ -18,19 +18,15 @@ public class UserDto {
     private String email;
     private String name;
     private String id;
-    private String profilePicture;
-    private String description;
 
     @Builder
-    public UserDto(String nickname, String password, String phone, String email, String name, String id, String profilePicture, String description) {
+    public UserDto(String nickname, String password, String phone, String email, String name, String id) {
         this.nickname = nickname;
         this.password = password;
         this.phone = phone;
         this.email = email;
         this.name = name;
         this.id = id;
-        this.profilePicture = profilePicture;
-        this.description = description;
     }
 
     public User toEntity() {
@@ -41,8 +37,6 @@ public class UserDto {
                 .email(email)
                 .name(name)
                 .id(id)
-                .profilePicture(profilePicture)
-                .description(description)
                 .build();
     }
 }
