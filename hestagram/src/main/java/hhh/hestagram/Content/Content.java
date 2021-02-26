@@ -1,20 +1,25 @@
 package hhh.hestagram.Content;
 
 import hhh.hestagram.BaseTimeEntity.BaseTimeEntity;
+import hhh.hestagram.Comment.Comment;
 import hhh.hestagram.User.User;
+import hhh.hestagram.hashtag.Hashtag;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
-//@AllArgsConstructor
 @NoArgsConstructor
 @Table(schema="hestagram", name="Content")
+@DynamicInsert
 public class Content extends BaseTimeEntity {
 
     @Id
@@ -36,9 +41,15 @@ public class Content extends BaseTimeEntity {
     @ColumnDefault("0")
     private Long likeCount;
 
-    @ManyToOne(targetEntity = User.class) //, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "content")
+    private List<Comment> comment = new ArrayList<>();
+
+    @ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
     @JoinColumn(name="user_index")
     private User user;
+
+    @OneToMany(mappedBy = "content")
+    private List<Hashtag> hashtags = new ArrayList<>();
 
     @Override
     public String toString() {

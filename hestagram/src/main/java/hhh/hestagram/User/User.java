@@ -1,17 +1,23 @@
 package hhh.hestagram.User;
+import hhh.hestagram.Comment.Comment;
 import hhh.hestagram.Content.Content;
+import hhh.hestagram.Follow.Follow;
+import hhh.hestagram.Likes.Likes;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Getter
 @NoArgsConstructor
 @Table(schema="hestagram", name="User")
+@DynamicInsert
 public class User {
 
     @Id
@@ -46,7 +52,19 @@ public class User {
     private String description;
 
     @OneToMany(mappedBy = "user")
-    private List<Content> contentList;
+    private List<Content> contents = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<Comment> comments = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<Likes> likes = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user") // Follow의 user_index
+    private List<Follow> follows = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user2") // Follow의 follow_index
+    private List<Follow> follows2 = new ArrayList<>();
 
     @Override
     public String toString() {
