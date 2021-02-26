@@ -1,9 +1,12 @@
 package hhh.hestagram.Comment;
 
 import hhh.hestagram.BaseTimeEntity.BaseTimeEntity;
+import hhh.hestagram.Content.Content;
+import hhh.hestagram.User.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
 
@@ -11,6 +14,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Table(schema="hestagram", name="Comment")
+@DynamicInsert
 public class Comment extends BaseTimeEntity {
 
     @Id
@@ -18,23 +22,21 @@ public class Comment extends BaseTimeEntity {
     @Column(name = "comment_index", nullable = false)
     private Long commentIndex;
 
-    @Column(name = "content_index", nullable = false)
-    private Long contentIndex;
+    @ManyToOne(targetEntity = Content.class, fetch = FetchType.LAZY)
+    @JoinColumn(name="content_index")
+    private Content content;
 
-    @Column(name = "user_index", nullable = false)
-    private Long userIndex;
+    @ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
+    @JoinColumn(name="user_index")
+    private User user;
 
     @Column(name = "comment_text", nullable = false)
     private String commentText;
 
-    /*@Column(name = "upload_time", nullable = false)
-    private Date uploadTime;*/
-
     @Builder
-    public Comment(Long contentIndex, Long userIndex, String commentText) { //Date uploadTime) {
-        this.contentIndex = contentIndex;
-        this.userIndex = userIndex;
+    public Comment(Content content, User user, String commentText) {
+        this.content = content;
+        this.user = user;
         this.commentText = commentText;
-        //this.uploadTime = uploadTime;
     }
 }

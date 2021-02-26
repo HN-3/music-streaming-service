@@ -1,2 +1,4 @@
-package hhh.hestagram.contents;public class ContentSaveTest {
+package hhh.hestagram.contents;
+
+public class ContentSaveTest {
 }
