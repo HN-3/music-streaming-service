@@ -66,6 +66,22 @@ public class User {
     @OneToMany(mappedBy = "user2") // Follow의 follow_index
     private List<Follow> follows2 = new ArrayList<>();
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "userIndex=" + userIndex +
+                ", nickname='" + nickname +
+                ", password=" + password +
+                ", phone=" + phone +
+                ", email=" + email +
+                ", name=" + name +
+                ", id=" + id +
+                "\nprofile_picture=" + profilePicture +
+                ", description=" + description +
+                '}';
+        // System.out.println("order = " + order); 로 객체 호출 시에 이 함수(toString) 호출
+    }
+
     @Builder
     public User(String nickname, String password, String phone, String email,
                 String name, String id, String profilePicture, String description) {
