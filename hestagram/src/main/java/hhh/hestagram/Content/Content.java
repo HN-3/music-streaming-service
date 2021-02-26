@@ -2,6 +2,7 @@ package hhh.hestagram.Content;
 
 import hhh.hestagram.BaseTimeEntity.BaseTimeEntity;
 import hhh.hestagram.Comment.Comment;
+import hhh.hestagram.Likes.Likes;
 import hhh.hestagram.User.User;
 import hhh.hestagram.hashtag.Hashtag;
 import lombok.AllArgsConstructor;
@@ -27,9 +28,6 @@ public class Content extends BaseTimeEntity {
     @Column(name = "content_index", nullable = false)
     private Long contentIndex;
 
-    @Column(name = "user_content_index", nullable = false)
-    private Long userContentIndex;
-
     @Column(name = "photo")
     private String photo;
 
@@ -41,6 +39,14 @@ public class Content extends BaseTimeEntity {
     @ColumnDefault("0")
     private Long likeCount;
 
+    @Column(name = "following_count")
+    @ColumnDefault("0")
+    private Long followingCount;
+
+    @Column(name = "follower_count")
+    @ColumnDefault("0")
+    private Long followerCount;
+
     @OneToMany(mappedBy = "content")
     private List<Comment> comment = new ArrayList<>();
 
@@ -49,26 +55,31 @@ public class Content extends BaseTimeEntity {
     private User user;
 
     @OneToMany(mappedBy = "content")
-    private List<Hashtag> hashtags = new ArrayList<>();
+    private List<Hashtag> hashtagsByContent = new ArrayList<>();
+
+    @OneToMany(mappedBy = "content")
+    private List<Likes> likesByContent = new ArrayList<>();
 
     @Override
     public String toString() {
         return "Content{" +
                 "contentIndex=" + contentIndex +
-                ", userContentIndex='" + userContentIndex +
                 ", photo=" + photo +
                 ", contentText=" + contentText +
                 ", likeCount=" + likeCount +
+                ", followingCount=" + followingCount +
+                ", followerCount=" + followerCount +
                 '}';
         // System.out.println("order = " + order); 로 객체 호출 시에 이 함수(toString) 호출
     }
 
     @Builder
-    public Content(Long userContentIndex, String photo, String contentText, Long likeCount, User user) {
-        this.userContentIndex = userContentIndex;
+    public Content(Long userContentIndex, String photo, String contentText, Long likeCount, Long followingCount, Long followerCount, User user) {
         this.photo = photo;
         this.contentText = contentText;
         this.likeCount = likeCount;
+        this.followingCount = followingCount;
+        this.followerCount = followerCount;
         this.user = user;
     }
 }
