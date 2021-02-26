@@ -7,14 +7,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-//@RequiredArgsConstructor
 @Service
-//@Transactional
 public class ContentServiceImpl implements ContentService {
 
     private final ContentRepository contentRepository;
-
-    ContentSaveRequestDto contentSaveRequestDto = new ContentSaveRequestDto();
 
     @Autowired
     public ContentServiceImpl(ContentRepository contentRepository) {
@@ -23,7 +19,7 @@ public class ContentServiceImpl implements ContentService {
 
     @Override
     public Long saveContent(ContentSaveRequestDto requestDto) {
-        return ContentRepository.save(requestDto.toEntity()).getContentIndex();
+        return contentRepository.save(requestDto.toEntity()).getContentIndex();
     }
 
     @Override
