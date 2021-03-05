@@ -55,10 +55,10 @@ public class Content extends BaseTimeEntity {
     private User user;
 
     @OneToMany(mappedBy = "content")
-    private List<Hashtag> hashtags = new ArrayList<>();
+    private List<Hashtag> hashtagsByContent = new ArrayList<>();
 
     @OneToMany(mappedBy = "content")
-    private List<Likes> likes = new ArrayList<>();
+    private List<Likes> likesByContent = new ArrayList<>();
 
     @Override
     public String toString() {

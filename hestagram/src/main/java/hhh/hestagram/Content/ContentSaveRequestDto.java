@@ -15,8 +15,8 @@ public class ContentSaveRequestDto {
     private User user;
 
     @Builder
-    public ContentSaveRequestDto(String photo, String contentText,
-                                 Long likeCount, User user) {
+    public ContentSaveRequestDto(String photo,
+                                 String contentText, Long likeCount, User user) {
         this.photo = photo;
         this.contentText = contentText;
         this.likeCount = likeCount;
