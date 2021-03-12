@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import java.util.Date;
 
 @Getter
+@Setter
 @NoArgsConstructor
 public class ContentSaveRequestDto {
     private String contentText;
@@ -14,17 +15,17 @@ public class ContentSaveRequestDto {
     private User user;
 
     @Builder
-    public ContentSaveRequestDto(String contentText, Long likeCount, User user) {
+    public ContentSaveRequestDto(String contentText, Long likeCount ) { //, User user) {
         this.contentText = contentText;
         this.likeCount = likeCount;
-        this.user = user;
+        //this.user = user;
     }
 
     public Content toEntity() {
         return Content.builder()
                 .contentText(contentText)
                 .likeCount(likeCount)
-                .user(user)
+                //.user(user)
                 .build();
     }
 }
