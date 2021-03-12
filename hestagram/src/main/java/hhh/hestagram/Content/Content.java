@@ -39,14 +39,6 @@ public class Content extends BaseTimeEntity {
     @ColumnDefault("0")
     private Long likeCount;
 
-    @Column(name = "following_count")
-    @ColumnDefault("0")
-    private Long followingCount;
-
-    @Column(name = "follower_count")
-    @ColumnDefault("0")
-    private Long followerCount;
-
     @OneToMany(mappedBy = "content")
     private List<Comment> comment = new ArrayList<>();
 
@@ -60,26 +52,22 @@ public class Content extends BaseTimeEntity {
     @OneToMany(mappedBy = "content")
     private List<Likes> likesByContent = new ArrayList<>();
 
-    @Override
+    /*@Override
     public String toString() {
         return "Content{" +
                 "contentIndex=" + contentIndex +
                 ", photo=" + photo +
                 ", contentText=" + contentText +
                 ", likeCount=" + likeCount +
-                ", followingCount=" + followingCount +
-                ", followerCount=" + followerCount +
                 '}';
         // System.out.println("order = " + order); 로 객체 호출 시에 이 함수(toString) 호출
-    }
+    }*/
 
     @Builder
-    public Content(Long userContentIndex, String photo, String contentText, Long likeCount, Long followingCount, Long followerCount, User user) {
+    public Content( String photo, String contentText, Long likeCount, User user) {
         this.photo = photo;
         this.contentText = contentText;
         this.likeCount = likeCount;
-        this.followingCount = followingCount;
-        this.followerCount = followerCount;
         this.user = user;
     }
 }
