@@ -6,6 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 @Slf4j
 @RequiredArgsConstructor // final 멤버변수가 있으면 생성자 항목에 포함시킴
 @RestController
@@ -17,8 +19,7 @@ public class ContentController {
 
     @ResponseBody
     @PostMapping("/contents/new") //{nickname}
-    //@RequestMapping(value = "/contents/new", method = RequestMethod.POST)
-    public String createPost(@RequestBody ContentSaveRequestDto contentSaveRequestDto) {
+    public String createPost(@RequestBody ContentSaveRequestDto contentSaveRequestDto) throws IOException {
         contentService.saveContent(contentSaveRequestDto); // db save
         return s3PresignedURL.getPreSignedURL("1/1");
     }
