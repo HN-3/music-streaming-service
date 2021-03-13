@@ -10,7 +10,7 @@
 
 ## 👩‍👩‍👧 프로젝트 참여자
 ### 👉 Back End
-* [HAEIN Lee](https://github.com/leehaeina)
+* [HAEIN LEE](https://github.com/leehaeina)
 * [HANEUL BAE](https://github.com/haneeeul)
 ### 👉 Front End
 * [HYEWON PARK](https://github.com/HYEEWON)
