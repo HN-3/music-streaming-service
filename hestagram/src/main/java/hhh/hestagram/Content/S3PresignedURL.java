@@ -67,38 +67,12 @@ public class S3PresignedURL {
             url = s3Client.generatePresignedUrl(generatePresignedUrlRequest);
             System.out.println("Pre-Signed URL : " + url.toString());
 
-            /*
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setDoOutput(true);
-            connection.setRequestMethod("PUT");
-            connection.setUseCaches(false);
-            connection.setRequestProperty("Content-type", "image/jpeg");
-
-            File file = new File(multipartFile.getOriginalFilename());
-            file.createNewFile();
-            FileOutputStream fos = new FileOutputStream(file);
-            fos.write(multipartFile.getBytes());
-            fos.close();
-
-            OutputStream out = connection.getOutputStream();
-            FileInputStream fis = new FileInputStream(file);
-            byte[] buffer = new byte[5000];
-            int readCount = 0;
-            while((readCount = fis.read(buffer)) != -1) {
-                out.write(buffer, 0, readCount);
-            }
-            out.flush();
-            out.close();
-
-            // local에 저장되는 이미지 삭제
-            if (file != null) file.delete();
-             */
         } catch (AmazonServiceException e) {
             e.printStackTrace();
         } catch (SdkClientException e) {
             e.printStackTrace();
         }
 
-        return url.toExternalForm(); //preSignedURL;
+        return url.toExternalForm();
     }
 }
