@@ -33,6 +33,12 @@ dependencies {
 
 	//AWS
 	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-aws', version: '2.2.1.RELEASE'
+	// https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-s3
+	//implementation group: 'com.amazonaws', name: 'aws-java-sdk-s3', version: '1.11.973'
+	// https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-core
+	//implementation group: 'com.amazonaws', name: 'aws-java-sdk-core', version: '1.11.973'
+
+
 }
 
 test {
