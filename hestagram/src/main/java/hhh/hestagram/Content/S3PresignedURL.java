@@ -24,9 +24,6 @@ import java.net.URL;
 @PropertySource("classpath:configure.properties")
 public class S3PresignedURL {
 
-    //@Autowired // spring 사용 시 DI 가능하다!
-    //private final AmazonS3 s3Client;
-
     @Value("${cloud.aws.s3.bucket}")
     private String bucket;
 
