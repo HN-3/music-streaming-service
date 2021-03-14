@@ -51,6 +51,14 @@ public class User {
     @ColumnDefault("null")
     private String description;
 
+    @Column(name = "following_count")
+    @ColumnDefault("0")
+    private Long followingCount;
+
+    @Column(name = "follower_count")
+    @ColumnDefault("0")
+    private Long followerCount;
+
     @OneToMany(mappedBy = "user")
     private List<Content> contents = new ArrayList<>();
 
@@ -84,7 +92,7 @@ public class User {
 
     @Builder
     public User(String nickname, String password, String phone, String email,
-                String name, String id, String profilePicture, String description) {
+                String name, String id, String profilePicture, String description, Long followingCount, Long followerCount) {
         this.nickname = nickname;
         this.password = password;
         this.phone = phone;
@@ -93,6 +101,8 @@ public class User {
         this.id = id;
         this.profilePicture = profilePicture;
         this.description = description;
+        this.followingCount = followingCount;
+        this.followerCount = followerCount;
     }
 }
 

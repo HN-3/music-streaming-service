@@ -20,12 +20,25 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	compileOnly 'org.projectlombok:lombok'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor('org.projectlombok:lombok')
+	testAnnotationProcessor('org.projectlombok:lombok')
+
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
 	compile 'org.springframework.boot:spring-boot-starter-data-jpa'
 	compile 'mysql:mysql-connector-java'
+
+	//AWS
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-aws', version: '2.2.1.RELEASE'
+	// https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-s3
+	//implementation group: 'com.amazonaws', name: 'aws-java-sdk-s3', version: '1.11.973'
+	// https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-core
+	//implementation group: 'com.amazonaws', name: 'aws-java-sdk-core', version: '1.11.973'
+
+
 }
 
 test {

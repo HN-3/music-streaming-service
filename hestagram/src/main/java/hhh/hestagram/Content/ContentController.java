@@ -1,26 +1,28 @@
 package hhh.hestagram.Content;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
+
+@Slf4j
+@RequiredArgsConstructor // final 멤버변수가 있으면 생성자 항목에 포함시킴
 @RestController
 @RequestMapping("/hestagram")
 public class ContentController {
-
-    private final ContentService contentService;
-
     @Autowired
-    public ContentController(ContentService contentService) {
-        this.contentService = contentService;
-    }
+    private final ContentService contentService;
+    //@Autowired
+    private final S3PresignedURL s3PresignedURL;
 
+    @ResponseBody
     @PostMapping("/contents/new") //{nickname}
-    public Long createPost(@RequestBody ContentSaveRequestDto contentSaveRequestDto) {
-        return contentService.saveContent(contentSaveRequestDto);
+    public String createPost(@RequestBody ContentSaveRequestDto contentSaveRequestDto) throws IOException {
+        contentService.saveContent(contentSaveRequestDto); // db save
+        return s3PresignedURL.getPreSignedURL("");
     }
     
 
